@@ -5,7 +5,7 @@ import { isRole, ROLE_COOKIE } from "@/lib/auth";
 export async function POST(request: Request) {
   const { role } = await request.json();
 
-  if (!isRole(role)) {
+  if (typeof role !== "string" || !isRole(role)) {
     return NextResponse.json({ message: "Invalid role" }, { status: 400 });
   }
 
