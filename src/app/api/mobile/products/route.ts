@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
       .select("id, name, price, stock_quantity, image_url, created_at")
       .eq("is_active", true)
       .order("created_at", { ascending: false });
-
+    console.log("query", query);
     if (search) {
       query = query.ilike("name", `%${search}%`);
     }
